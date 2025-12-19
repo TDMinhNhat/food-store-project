@@ -1,0 +1,85 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.github.tdminhnhat",
+    "module": "library-core",
+    "version": "1.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.2.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 25,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "library-core-1.0.jar",
+          "url": "library-core-1.0.jar",
+          "size": 22091,
+          "sha512": "a94ba88d0a3004dd385115cd28d547cb7f27cae4fc15f7a6469b804b31cd6ccb610aab58c28e5874cc497e121d9bbdae613d2623c2fa8d20059d40d77cc2d7f7",
+          "sha256": "a0502991c87f2ae1e3aa2f1814f6fb67db3c322010dc9e3703696a498c93a50f",
+          "sha1": "0d3e57bd403704b545b90d635cc795699df9f2f3",
+          "md5": "ab46d7680a37f69564e71fda90449b3e"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 25,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-data-jpa"
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-validation"
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-webmvc"
+        },
+        {
+          "group": "io.minio",
+          "module": "minio",
+          "version": {
+            "requires": "8.6.0"
+          }
+        },
+        {
+          "group": "org.postgresql",
+          "module": "postgresql"
+        }
+      ],
+      "files": [
+        {
+          "name": "library-core-1.0.jar",
+          "url": "library-core-1.0.jar",
+          "size": 22091,
+          "sha512": "a94ba88d0a3004dd385115cd28d547cb7f27cae4fc15f7a6469b804b31cd6ccb610aab58c28e5874cc497e121d9bbdae613d2623c2fa8d20059d40d77cc2d7f7",
+          "sha256": "a0502991c87f2ae1e3aa2f1814f6fb67db3c322010dc9e3703696a498c93a50f",
+          "sha1": "0d3e57bd403704b545b90d635cc795699df9f2f3",
+          "md5": "ab46d7680a37f69564e71fda90449b3e"
+        }
+      ]
+    }
+  ]
+}
