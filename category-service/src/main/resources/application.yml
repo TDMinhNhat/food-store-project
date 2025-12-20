@@ -1,0 +1,39 @@
+# List environment variables
+# DB_HOST_NAME - Database host name (default: localhost)
+# DB_PORT - Database port (default: 12001)
+# DB_NAME - Database name (default: category-service-db)
+# DB_USER - Database user (default: postgres)
+# DB_PASSWORD - Database password (default: 123456789)
+# SERVER_PORT - Server port (default: 11003)
+
+spring:
+  application:
+    name: category-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST_NAME:localhost}:${DB_PORT:12001}/${DB_NAME:category_service_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:123456789}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  flyway:
+    validate-migration-naming: true
+    validate-on-migrate: true
+    enabled: true
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST_NAME:localhost}:${DB_PORT:12001}/${DB_NAME:category_service_db}
+    user: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:123456789}
+server:
+  port: ${SERVER_PORT:11003}
+  servlet:
+    context-path: /category
+minio:
+  endpoint: ${MINIO_HOST:localhost}:${MINIO_PORT:12002}
+  access-key: ${MINIO_ACCESS_KEY:minioadmin}
+  secret-key: ${MINIO_SECRET_KEY:minioadmin}
