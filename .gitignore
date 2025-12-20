@@ -12,11 +12,14 @@
 
 # Intellij IDEA
 /.idea/
+.gradle/
+build/
+out/
 *.iml
 *.iws
-out/
 *.ipr
-.gradle/
+*.class
+
 # VS Code
 .vscode/
 .history/
