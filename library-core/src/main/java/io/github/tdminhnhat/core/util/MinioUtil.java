@@ -7,19 +7,17 @@ import io.minio.errors.MinioException;
 import jakarta.annotation.PostConstruct;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
-@Component
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class MinioUtil {
 
     MinioClient minioClient;
-
     String bucketName;
 
-    public MinioUtil(MinioClient minioClient, @Value("${minio.bucket-name}") String bucketName) {
-        this.minioClient = minioClient;
+    public MinioUtil(String endpoint, String accessKey, String secretKey, String bucketName) {
+        this.minioClient = MinioClient.builder()
+                .endpoint(endpoint)
+                .credentials(accessKey, secretKey).build();
         this.bucketName = bucketName;
     }
 

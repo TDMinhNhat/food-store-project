@@ -1,27 +1,17 @@
 package io.github.tdminhnhat.core.config;
 
-import io.minio.MinioClient;
-import org.springframework.beans.factory.annotation.Value;
+import io.github.tdminhnhat.core.properties.MinioProperties;
+import io.github.tdminhnhat.core.util.MinioUtil;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MinioConfig {
 
-    @Value("${minio.endpoint}")
-    public String endpoint;
-
-    @Value("${minio.access-key}")
-    private String accessKey;
-
-    @Value("${minio.secret-key}")
-    private String secretKey;
-
     @Bean
-    public MinioClient minioClient() {
-        return MinioClient.builder()
-                .endpoint(endpoint)
-                .credentials(accessKey, secretKey)
-                .build();
+    @ConditionalOnProperty(prefix = "minio", name = {"endpoint","access-key","secret-key","bucket-name"})
+    public MinioUtil minioUtil(MinioProperties minioProperties) {
+        return new MinioUtil(minioProperties.getEndpoint(), minioProperties.getAccessKey(), minioProperties.getSecretKey(), minioProperties.getBucketName());
     }
 }
