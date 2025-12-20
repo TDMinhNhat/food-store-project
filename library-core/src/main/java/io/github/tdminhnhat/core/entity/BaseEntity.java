@@ -15,12 +15,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
 
+@EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
-@DynamicInsert @DynamicUpdate
 public class BaseEntity {
 
     @Id
@@ -56,5 +55,7 @@ public class BaseEntity {
 
     public BaseEntity(String note) {
         this.note = note;
+        this.deleted = false;
+        this.version = 0L;
     }
 }
