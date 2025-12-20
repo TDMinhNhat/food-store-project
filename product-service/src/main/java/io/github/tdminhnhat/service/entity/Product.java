@@ -25,15 +25,15 @@ public class Product extends BaseEntity {
     @Column(name = "brand", length = 200, nullable = false) @NonNull
     String brand;
 
-    @ManyToOne @JoinColumn(name = "category_id", nullable = false) @NonNull
-    Category category;
+    @Column(name = "category_id", nullable = false) @NonNull
+    Long categoryId;
 
-    public Product(String note, @NonNull String productName, @NonNull String productCode, String description, @NonNull String brand, @NonNull Category category) {
+    public Product(String note, @NonNull String productName, @NonNull String productCode, String description, @NonNull String brand, @NonNull Long categoryId) {
         super(note);
         this.productName = productName;
         this.productCode = productCode;
         this.description = description;
         this.brand = brand;
-        this.category = category;
+        this.categoryId = categoryId;
     }
 }
