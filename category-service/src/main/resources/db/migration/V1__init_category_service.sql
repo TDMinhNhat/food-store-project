@@ -8,7 +8,7 @@ CREATE TABLE categories
     created_by       VARCHAR(255)                            NOT NULL,
     last_modified_by VARCHAR(255),
     version          BIGINT                                  NOT NULL,
-    type_name        VARCHAR(50)                             NOT NULL,
+    category_name    VARCHAR(50)                             NOT NULL,
     category_parent  BIGINT,
     image_id         VARCHAR(100),
     description      TEXT    DEFAULT '',
@@ -16,7 +16,7 @@ CREATE TABLE categories
 );
 
 ALTER TABLE categories
-    ADD CONSTRAINT uc_categories_type_name UNIQUE (type_name);
+    ADD CONSTRAINT uc_categories_type_name UNIQUE (category_name);
 
 ALTER TABLE categories
     ADD CONSTRAINT FK_CATEGORIES_ON_CATEGORY_PARENT FOREIGN KEY (category_parent) REFERENCES categories (id);

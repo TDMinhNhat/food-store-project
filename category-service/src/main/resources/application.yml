@@ -45,3 +45,8 @@ minio:
   bucket-name: ${MINIO_BUCKET_NAME:category-service}
 api-path:
   category: /api/v1/categories
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true
