@@ -7,4 +7,13 @@ services:
       POSTGRES_PASSWORD: 123456789
       POSTGRES_DB: postgres
     ports:
-      - "12001:5432"
+      - "12432:5432"
+  minio:
+    image: minio/minio
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data
+    ports:
+      - "12000:9000"
+      - "12001:9001"

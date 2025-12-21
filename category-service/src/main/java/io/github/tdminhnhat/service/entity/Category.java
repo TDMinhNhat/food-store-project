@@ -13,8 +13,8 @@ import lombok.experimental.FieldDefaults;
 @EqualsAndHashCode(callSuper = true)
 public class Category extends BaseEntity {
 
-    @Column(name = "type_name", length = 50, nullable = false, unique = true) @NonNull
-    String typeName;
+    @Column(name = "categoryName", length = 50, nullable = false, unique = true) @NonNull
+    String categoryName;
 
     @ManyToOne @JoinColumn(name = "category_parent")
     Category categoryParent;
@@ -25,9 +25,9 @@ public class Category extends BaseEntity {
     @Column(name = "description", columnDefinition = "TEXT DEFAULT ''")
     String description;
 
-    public Category(String note, @NonNull String typeName, Category categoryParent, String imageId, String description) {
+    public Category(String note, @NonNull String categoryName, Category categoryParent, String imageId, String description) {
         super(note);
-        this.typeName = typeName;
+        this.categoryName = categoryName;
         this.categoryParent = categoryParent;
         this.imageId = imageId;
         this.description = description;

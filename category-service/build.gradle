@@ -2,12 +2,11 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '4.0.1'
     id 'io.spring.dependency-management' version '1.1.7'
-    id 'org.hibernate.orm' version '7.2.0.Final'
     id 'org.graalvm.buildtools.native' version '0.11.3'
 }
 
 group = 'io.github.tdminhnhat'
-version = '0.0.1-SNAPSHOT'
+version = '1.0'
 description = 'category-service'
 
 java {
@@ -34,6 +33,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
     implementation 'org.flywaydb:flyway-database-postgresql'
+
+    implementation 'org.mapstruct:mapstruct:1.6.3'
+    implementation 'org.mapstruct:mapstruct-processor:1.6.3'
     implementation 'io.github.tdminhnhat:library-core:1.0'
 
     compileOnly 'org.projectlombok:lombok'
@@ -50,12 +52,6 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
-
-hibernate {
-    enhancement {
-        enableAssociationManagement = true
-    }
 }
 
 tasks.named('test') {

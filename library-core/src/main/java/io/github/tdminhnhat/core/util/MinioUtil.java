@@ -1,12 +1,13 @@
 package io.github.tdminhnhat.core.util;
 
-import io.minio.BucketExistsArgs;
-import io.minio.MakeBucketArgs;
-import io.minio.MinioClient;
+import io.minio.*;
 import io.minio.errors.MinioException;
 import jakarta.annotation.PostConstruct;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.concurrent.TimeUnit;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class MinioUtil {
@@ -28,5 +29,17 @@ public class MinioUtil {
         } else if(!minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build())) {
             minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
         }
+    }
+
+    public void uploadFile(MultipartFile file, String objectName) throws Exception {
+        minioClient.putObject(PutObjectArgs.builder().bucket(bucketName).stream(file.getInputStream(), file.getSize(), -1).object(objectName).build());
+    }
+
+    public void deleteFile(String objectName) throws Exception {
+        minioClient.removeObject(RemoveObjectArgs.builder().bucket(bucketName).object(objectName).build());
+    }
+
+    public String getObjectUrl(String objectName) throws Exception {
+        return minioClient.getPresignedObjectUrl(GetPresignedObjectUrlArgs.builder().bucket(bucketName).object(objectName).expiry(24, TimeUnit.HOURS).build());
     }
 }

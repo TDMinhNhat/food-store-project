@@ -10,29 +10,25 @@ import java.util.List;
 
 public interface IController<S extends Record, P extends Number> {
 
-    ResponseEntity<? extends BaseVo> add(S request);
+    ResponseEntity<? extends BaseVo> add(S request) throws Exception;
 
-    ResponseEntity<? extends BaseVo> update(P id, S request);
+    ResponseEntity<? extends BaseVo> update(P id, S request) throws Exception;
 
-    ResponseEntity<? extends BaseVo> getById(P id);
+    ResponseEntity<? extends BaseVo> getById(P id) throws Exception;
 
-    ResponseEntity<? extends BaseVo> delete(P id);
+    ResponseEntity<? extends BaseVo> delete(P id) throws Exception;
 
-    ResponseEntity<Collection<? extends BaseVo>> getAll();
+    <C extends Collection<BaseVo>> ResponseEntity<C> getAll() throws Exception;
 
-    default <F extends BaseQo> ResponseEntity<Collection<? extends BaseVo>> getAll(F filter) {
+    default <F extends BaseQo> ResponseEntity<? extends Collection<? extends BaseVo>> getAllByFilter(F filter) throws Exception {
         return ResponseEntity.ok(List.of());
     }
 
-    default ResponseEntity<? extends BaseVo> addImage(P id, MultipartFile file) {
+    default ResponseEntity<? extends BaseVo> addOrUpdateFile(P id, MultipartFile file) throws Exception {
         return ResponseEntity.ok().build();
     }
 
-    default ResponseEntity<? extends BaseVo> updateImage(P id, MultipartFile file) {
-        return ResponseEntity.ok().build();
-    }
-
-    default ResponseEntity<? extends BaseVo> deleteImage(P id) {
+    default ResponseEntity<? extends BaseVo> deleteFile(P id) throws Exception {
         return ResponseEntity.ok().build();
     }
 }
