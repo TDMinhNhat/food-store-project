@@ -1,10 +1,15 @@
 # List environment variables
 # DB_HOST_NAME - Database host name (default: localhost)
-# DB_PORT - Database port (default: 12001)
+# DB_PORT - Database port (default: 12432)
 # DB_NAME - Database name (default: category-service-db)
 # DB_USER - Database user (default: postgres)
 # DB_PASSWORD - Database password (default: 123456789)
 # SERVER_PORT - Server port (default: 11003)
+# MINIO_HOST - MinIO host (default: localhost)
+# MINIO_PORT - MinIO port (default: 12000)
+# MINIO_ACCESS_KEY - MinIO access key (default: minioadmin)
+# MINIO_SECRET_KEY - MinIO secret key (default: minioadmin)
+# MINIO_BUCKET_NAME - MinIO bucket name (default: category-service)
 
 spring:
   application:
@@ -34,8 +39,9 @@ server:
   servlet:
     context-path: /category
 minio:
-  endpoint: ${MINIO_HOST:localhost}:${MINIO_PORT:12001}
+  endpoint: http://${MINIO_HOST:localhost}:${MINIO_PORT:12000}
   access-key: ${MINIO_ACCESS_KEY:minioadmin}
   secret-key: ${MINIO_SECRET_KEY:minioadmin}
+  bucket-name: ${MINIO_BUCKET_NAME:category-service}
 api-path:
   category: /api/v1/categories

@@ -1,6 +1,6 @@
 # List environment variables
 # DB_HOST_NAME - Database host name (default: localhost)
-# DB_PORT - Database port (default: 12001)
+# DB_PORT - Database port (default: 12432)
 # DB_NAME - Database name (default: stock-service-db)
 # DB_USER - Database user (default: postgres)
 # DB_PASSWORD - Database password (default: 123456789)
@@ -11,7 +11,7 @@ spring:
     name: stock-service
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${DB_HOST_NAME:localhost}:${DB_PORT:12001}/${DB_NAME:stock_service_db}
+    url: jdbc:postgresql://${DB_HOST_NAME:localhost}:${DB_PORT:12432}/${DB_NAME:stock_service_db}
     username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:123456789}
   jpa:
@@ -26,7 +26,7 @@ spring:
     validate-on-migrate: true
     enabled: true
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${DB_HOST_NAME:localhost}:${DB_PORT:12001}/${DB_NAME:stock_service_db}
+    url: jdbc:postgresql://${DB_HOST_NAME:localhost}:${DB_PORT:12432}/${DB_NAME:stock_service_db}
     user: ${DB_USER:postgres}
     password: ${DB_PASSWORD:123456789}
 server:
