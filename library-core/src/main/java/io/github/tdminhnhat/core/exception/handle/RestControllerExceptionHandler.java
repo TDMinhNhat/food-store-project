@@ -1,5 +1,6 @@
 package io.github.tdminhnhat.core.exception.handle;
 
+import io.github.tdminhnhat.core.exception.FileException;
 import io.github.tdminhnhat.core.exception.QueryNotFoundException;
 import io.minio.errors.MinioException;
 import org.springframework.http.HttpStatus;
@@ -25,10 +26,15 @@ public class RestControllerExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<List<HashMap<Object, Object>>> handle(MethodArgumentNotValidException e) {
+    public ResponseEntity<List<HashMap<Object, Object>>> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getBindingResult().getAllErrors().stream().map(error -> new HashMap<>(){{
             put("field", error.getObjectName());
             put("message", error.getDefaultMessage());
         }}).toList());
+    }
+
+    @ExceptionHandler(FileException.class)
+    public ResponseEntity<String> handleFileException(FileException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }

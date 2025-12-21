@@ -20,6 +20,8 @@ import java.time.Instant;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class BaseEntity {
 
     @Id

@@ -2,6 +2,7 @@ package io.github.tdminhnhat.core.util;
 
 import io.minio.*;
 import io.minio.errors.MinioException;
+import io.minio.http.Method;
 import jakarta.annotation.PostConstruct;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -24,15 +25,15 @@ public class MinioUtil {
 
     @PostConstruct
     public void initService() throws Exception {
-        if(bucketName.isEmpty()) {
+        if (bucketName.isEmpty()) {
             throw new MinioException("Bucket name is not configured. Please set 'minio.bucket-name' property.");
-        } else if(!minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build())) {
+        } else if (!minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build())) {
             minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
         }
     }
 
     public void uploadFile(MultipartFile file, String objectName) throws Exception {
-        minioClient.putObject(PutObjectArgs.builder().bucket(bucketName).stream(file.getInputStream(), file.getSize(), -1).object(objectName).build());
+        minioClient.putObject(PutObjectArgs.builder().bucket(bucketName).object(objectName).contentType(file.getContentType()).stream(file.getInputStream(), file.getSize(), -1).build());
     }
 
     public void deleteFile(String objectName) throws Exception {
@@ -40,6 +41,6 @@ public class MinioUtil {
     }
 
     public String getObjectUrl(String objectName) throws Exception {
-        return minioClient.getPresignedObjectUrl(GetPresignedObjectUrlArgs.builder().bucket(bucketName).object(objectName).expiry(24, TimeUnit.HOURS).build());
+        return minioClient.getPresignedObjectUrl(GetPresignedObjectUrlArgs.builder().method(Method.GET).bucket(bucketName).object(objectName).expiry(24, TimeUnit.HOURS).build());
     }
 }

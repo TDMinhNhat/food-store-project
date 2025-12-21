@@ -13,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 @EqualsAndHashCode(callSuper = true)
 public class Category extends BaseEntity {
 
-    @Column(name = "categoryName", length = 50, nullable = false, unique = true) @NonNull
+    @Column(name = "category_name", length = 50, nullable = false, unique = true) @NonNull
     String categoryName;
 
     @ManyToOne @JoinColumn(name = "category_parent")

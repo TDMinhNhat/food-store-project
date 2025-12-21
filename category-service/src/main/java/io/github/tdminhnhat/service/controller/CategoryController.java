@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,9 +23,9 @@ public class CategoryController implements IController<CategoryDto, Long>{
 
     CategoryService categoryService;
 
-    @PostMapping("/")
+    @PostMapping
     @Override
-    public ResponseEntity<CategoryVo> add(CategoryDto request) throws Exception {
+    public ResponseEntity<CategoryVo> add(@Valid @RequestBody CategoryDto request) throws Exception {
         return categoryService.add(request);
     }
 
@@ -52,7 +53,7 @@ public class CategoryController implements IController<CategoryDto, Long>{
         return categoryService.getAll();
     }
 
-    @PutMapping("/{id}/image")
+    @PutMapping(value = "/{id}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Override
     public ResponseEntity<CategoryVo> addOrUpdateFile(@PathVariable Long id, @RequestPart MultipartFile file) throws Exception {
         return categoryService.addOrUpdateFile(id, file);

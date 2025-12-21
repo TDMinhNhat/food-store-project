@@ -16,4 +16,4 @@ services:
     command: server /data
     ports:
       - "12000:9000"
-      - "12001:9001"
+      - "12001:39763"
