@@ -1,8 +1,8 @@
-package io.github.tdminhnhat.core.model.dto;
+package io.github.tdminhnhat.core.model.qo;
 
 import org.springframework.data.domain.Sort;
 
-public record SortRequestDto(
+public record SortRequestQo(
 
         String property,
 

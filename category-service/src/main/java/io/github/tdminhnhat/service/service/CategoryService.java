@@ -24,7 +24,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Service
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 public class CategoryService implements IService<CategoryDto, Long> {
 

@@ -27,4 +27,6 @@ public class BaseQo {
     String lastModifiedBy;
 
     Long version;
+
+    PageRequestQo pageRequest;
 }
