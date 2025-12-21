@@ -12,4 +12,12 @@ public class ValidateFile {
         return contentType.equals("image/jpeg") ||
                contentType.equals("image/png");
     }
+
+    public static boolean validateIconFile(MultipartFile file) {
+        String contentType = file.getContentType();
+        if (contentType == null) {
+            return false;
+        }
+        return contentType.equals("image/x-icon");
+    }
 }
