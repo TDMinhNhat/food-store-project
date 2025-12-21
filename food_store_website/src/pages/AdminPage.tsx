@@ -1,6 +1,29 @@
+import { Stack } from "@mui/material";
+import { useState } from "react";
+import TabAdminComponent from "../components/admin/TabAdminComponent";
+import DashboardComponent from "../components/admin/DashboardComponent";
+import CategoryComponent from "../components/admin/CategoryComponent";
 
 export default function AdminPage() {
+
+    const [tab, setTab] = useState("Dashboard");
+    
+    function getContentTab(tab: string) {
+        switch(tab) {
+            case "Dashboard":
+                return <DashboardComponent />;
+            case "Category":
+                return <CategoryComponent />;
+            default:
+                return <DashboardComponent />;
+        }
+    }
+
     return (
-        <h1>Admin Page</h1>
+        <Stack direction={"row"}>
+            <TabAdminComponent tab={tab} setTab={setTab} />
+
+            { getContentTab(tab) }
+        </Stack>
     )
 }
