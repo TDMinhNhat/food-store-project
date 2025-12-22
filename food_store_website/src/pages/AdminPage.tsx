@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { useState } from "react";
 import TabAdminComponent from "../components/admin/TabAdminComponent";
 import DashboardComponent from "../components/admin/DashboardComponent";
@@ -23,7 +23,12 @@ export default function AdminPage() {
         <Stack direction={"row"}>
             <TabAdminComponent tab={tab} setTab={setTab} />
 
-            { getContentTab(tab) }
+            <Box sx={{
+                marginLeft: "200px"
+            }}>
+                { getContentTab(tab) }
+            </Box>
+
         </Stack>
     )
 }
