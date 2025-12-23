@@ -20,10 +20,14 @@ export default function AdminPage() {
     }
 
     return (
-        <Stack direction={"row"}>
+        <Stack direction={"row"} sx={{
+            width: "100%",
+            height: "100%",
+        }}>
             <TabAdminComponent tab={tab} setTab={setTab} />
 
             <Box sx={{
+                width: "100%",
                 marginLeft: "200px"
             }}>
                 { getContentTab(tab) }

@@ -4,7 +4,7 @@ export default function CustomTableComponent({ columns, rows }:{ columns: string
 
     return (
         <TableContainer component={Paper} sx={{
-            minWidth: "100%"
+            width: "100%"
         }}>
             <Table>
                 <TableHead>

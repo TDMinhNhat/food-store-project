@@ -1,5 +1,6 @@
 import { Box, Stack } from "@mui/material";
 import CustomTableComponent from "../../styles/components/CustomTableComponent";
+import CustomStatisticForm from "../../styles/components/CustomStatisticForm";
 
 export default function CategoryComponent() {
 
@@ -19,15 +20,19 @@ export default function CategoryComponent() {
 
 
     return (
-        <Stack direction={"row"} sx={{
-
+        <Stack direction={"column"} sx={{
+          width: "100%"
         }}>
 
-            <Box>
-
+            <Box sx={{
+              width: "100%"
+            }}>
+                <CustomStatisticForm />
             </Box>
 
-            <Box>
+            <Box sx={{
+              width: "100%"
+            }}>
                 <CustomTableComponent columns={columns} rows={rows} />
             </Box>
 
