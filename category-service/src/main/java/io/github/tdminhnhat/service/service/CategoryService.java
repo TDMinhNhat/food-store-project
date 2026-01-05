@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -75,7 +76,7 @@ public class CategoryService implements IService<CategoryDto, Long> {
 
     @Override
     @Transactional(readOnly = true)
-    public ResponseEntity<Collection<CategoryVo>> getAll() {
+    public ResponseEntity<List<CategoryVo>> getAll() {
         return ResponseEntity.ok(categoryRepository.findAll().stream().map(category -> {
             try {
                 return this.getCategoryVo(category);

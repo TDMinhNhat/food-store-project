@@ -18,7 +18,7 @@ public interface IService<S extends Record, P extends Number> {
 
     ResponseEntity<? extends BaseVo> delete(P id) throws Exception;
 
-    <C extends Collection<BaseVo>> ResponseEntity<C> getAll() throws Exception;
+    <C extends List<BaseVo>> ResponseEntity<C> getAll() throws Exception;
 
     default <F extends BaseQo> ResponseEntity<Collection<? extends BaseVo>> getAllByFilter(F filter) throws Exception {
         return ResponseEntity.ok(List.of());

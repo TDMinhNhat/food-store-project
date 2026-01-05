@@ -10,7 +10,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 public enum ProductStatus {
 
-    SELLING("Selling"), OUT_OF_STOCK("Out of Stock"), DISCONTINUED("Discontinued");
+    DRAFT("Draft"), SELLING("Selling"), DISCONTINUED("Discontinued");
 
     String status;
 }

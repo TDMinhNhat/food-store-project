@@ -17,15 +17,15 @@ public class ProductSkuAttribute extends BaseEntity {
     ProductSku productSku;
 
     @ManyToOne @JoinColumn(name = "product_attribute_id", nullable = false) @NonNull
-    Attribute attribute;
+    ProductAttribute productAttribute;
 
     @Column(name = "value", nullable = false, columnDefinition = "TEXT DEFAULT ''") @NonNull
     String value;
 
-    public ProductSkuAttribute(String note, @NonNull ProductSku productSku, @NonNull Attribute attribute, @NonNull String value) {
+    public ProductSkuAttribute(String note, @NonNull ProductSku productSku, @NonNull ProductAttribute productAttribute, @NonNull String value) {
         super(note);
         this.productSku = productSku;
-        this.attribute = attribute;
+        this.productAttribute = productAttribute;
         this.value = value;
     }
 }

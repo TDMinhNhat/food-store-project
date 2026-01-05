@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("${api-path.category}")
@@ -49,7 +50,7 @@ public class CategoryController implements IController<CategoryDto, Long>{
 
     @GetMapping
     @Override
-    public ResponseEntity<Collection<CategoryVo>> getAll() throws Exception {
+    public ResponseEntity<List<CategoryVo>> getAll() throws Exception {
         return categoryService.getAll();
     }
 

@@ -34,7 +34,7 @@ public class ProductSku extends BaseEntity {
     LocalDate expireDate;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", length = 50, nullable = false, columnDefinition = "VARCHAR(150) DEFAULT 'OUT_OF_STOCK'") @NonNull
+    @Column(name = "status", length = 50, nullable = false, columnDefinition = "VARCHAR(150) DEFAULT 'DRAFT'") @NonNull
     ProductStatus status;
 
     public ProductSku(String note, @NonNull Product product, @NonNull String skuCode, @NonNull String barCode, String description, @NonNull LocalDate manufactureDate, LocalDate expireDate, @NonNull ProductStatus status) {
