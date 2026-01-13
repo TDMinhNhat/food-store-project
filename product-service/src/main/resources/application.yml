@@ -1,0 +1,45 @@
+# List environment variables
+# DB_HOST_NAME - Database host name (default: local)
+# DB_PORT - Database port (default: 12432)
+# DB_NAME - Database name (default: food-service-db)
+# DB_USER - Database user (default: postgres)
+# DB_PASSWORD - Database password (default: 123456789)
+# SERVER_PORT - Server port (default: 11001)
+# MINIO_HOST - MinIO host (default: localhost)
+# MINIO_PORT - MinIO port (default: 12000)
+# MINIO_ACCESS_KEY - MinIO access key (default: minioadmin)
+# MINIO_SECRET_KEY - MinIO secret key (default: minioadmin)
+# MINIO_BUCKET_NAME - MinIO bucket name (default: product-service)
+
+spring:
+  application:
+    name: food-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST_NAME:localhost}:${DB_PORT:12432}/${DB_NAME:product_service_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:123456789}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  flyway:
+    validate-migration-naming: true
+    validate-on-migrate: true
+    enabled: true
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST_NAME:localhost}:${DB_PORT:12432}/${DB_NAME:product_service_db}
+    user: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:123456789}
+server:
+  port: ${SERVER_PORT:11001}
+  servlet:
+    context-path: /product
+minio:
+  endpoint: http://${MINIO_HOST:localhost}:${MINIO_PORT:12000}
+  access-key: ${MINIO_ACCESS_KEY:minioadmin}
+  secret-key: ${MINIO_SECRET_KEY:minioadmin}
+  bucket-name: ${MINIO_BUCKET_NAME:product-service}
