@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
-public class AttributeService implements IService<ProductAttributeDto, Long> {
+public class ProductAttributeService implements IService<ProductAttributeDto, Long> {
 
     ProductAttributeRepository productAttributeRepository;
     ProductAttributeMapper productAttributeMapper;
