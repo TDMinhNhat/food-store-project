@@ -4,16 +4,16 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
-public record CategoryDto(
+public record ProductAttributeDto(
 
-        @Size(max = 50, message = "maximum length is {max} characters")
         @NotBlank(message = "can not be null or empty")
-        String categoryName,
+        @Size(max = 50, message = "maximum length is {max} characters")
+        String attributeName,
 
-        @Positive(message = "must be a number greater than 0")
-        Long categoryParentId,
+        @Positive(message = "must be a positive number")
+        Long attributeParentId,
 
-        String description,
+        String attributeDescription,
 
         String note
 ) {

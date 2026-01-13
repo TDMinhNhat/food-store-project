@@ -1,7 +1,6 @@
 package io.github.tdminhnhat.service.model.vo;
 
 import io.github.tdminhnhat.core.model.vo.BaseVo;
-import io.github.tdminhnhat.service.entity.Category;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -10,15 +9,12 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class CategoryVo extends BaseVo {
+public class ProductAttributeVo extends BaseVo {
 
-    String categoryName;
+    String attributeName;
 
-    Category categoryParent;
+    ProductAttributeVo productAttributeParent;
 
-    String imageId;
+    String attributeDescription;
 
-    String imageUrl;
-
-    String description;
 }

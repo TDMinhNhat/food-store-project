@@ -38,6 +38,8 @@ server:
   port: ${SERVER_PORT:11001}
   servlet:
     context-path: /product
+api-path:
+  attribute: /api/v1/attribute
 minio:
   endpoint: http://${MINIO_HOST:localhost}:${MINIO_PORT:12000}
   access-key: ${MINIO_ACCESS_KEY:minioadmin}

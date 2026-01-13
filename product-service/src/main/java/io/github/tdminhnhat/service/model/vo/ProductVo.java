@@ -1,24 +1,25 @@
 package io.github.tdminhnhat.service.model.vo;
 
 import io.github.tdminhnhat.core.model.vo.BaseVo;
-import io.github.tdminhnhat.service.entity.Category;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class CategoryVo extends BaseVo {
+public class ProductVo extends BaseVo {
 
-    String categoryName;
+    String productName;
 
-    Category categoryParent;
+    String productCode;
 
-    String imageId;
+    String brand;
 
-    String imageUrl;
+    Long categoryId;
 
-    String description;
+    List<ProductSkuVo> productSkuVos;
 }
